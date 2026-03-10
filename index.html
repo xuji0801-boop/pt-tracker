@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PT Tracker">
+<meta name="theme-color" content="#08080e">
+<title>PT Tracker</title>
+
+<!-- Apple touch icons (inline base64) -->
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEtklEQVR4nO3czXUaMRiFYcFxDVTgLFJMtikla69TSrYpJ1RAE87CxgfjmUG/I+ne91knMNK8+RAcwiF0dDo9v/Z8frRxuZwPvZ57tycmXm97Rd70SYgYS1rG3eSBCRkxWoRd9QEJGTlqhl3lgQgZNdQI+1j6AMSMWmq0VBQ0MaO20qayRjwhYw85R5DkCU3M2EtOa0lBEzP2ltpcdNDEjF5S2osKmpjRW2yDD4MmZowipsXiz6GBkWwGzXTGaB41uRo0MWNUW20uBk3MGN1ao5yhIeVL0ExnzGKpVSY0pHwKmumM2dw3y4SGlI+gmc6Y1W27TGhIIWhIOYbAcQPzuzbMhIYUgoYUgoYUgoaUA28IoYQJDSkEDSkEDSkEDSlPvS9A0c8f/6L/7J+/3xpeiR8+5SiUEm8sIs9H0BlaRLyGuNMQdII9Q75H2HEIOkLPkO8R9jaC3jBSyPcIexkf260YOeYQxr++Xgh6wSyxzHKde+LIcWPmQDiCvGFCv5s55hDmv/5aCDroxKCyjhL2QatFoLaeVNZBq9581XXFsA1a/aarr2+NbdDQZBm0y/RyWectu6DdbrLbeq2Cdru5V07rtgoa+myCdppSS1zWbxM0PFgE7TKdHnHYB4ug4UM+aIeplEJ9P+SDhheChhTpoNVfXnMp74t00PBD0JBC0JBC0JAiG7TyG58aVPdHNmh4ImhIIWhIIWhIIWhIIWhIIWhIIWhIIWhIIWhIkQ2aX7Tfpro/skHDE0FDCkFDCkFDinTQqm98Sinvi3TQ8EPQkCIftPLLaw71/ZAPGl4sglafSrEc9sEiaPiwCdphOm1xWb9N0PBgFbTLlLrntG6roEPwurkh+K3XLugQfG6yyzpvWQYNXbZBq08v9fWtsQ06BN2brrquGNZBh6B389XWk8o+6BB0IlBZRwmCfjd7DLNffy2H0+n5tfdFrHn5VedX5l9+p93smX7dPifkXvu6h2EndK1Nz3msWaZdz5hrP1YtQwbdYqPUou4dc8vHLDHckaP1BuW8TI50BMn9hzbivrbw1PsCZnCNqGfYo79ijMIu6JGmbYpZr3tvQ56hgVwEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSkEDSl2X05y/dbay3ePLzcxoSFluKBbflF8lC+h9+Cyr8MFHUKbDRpp03tx2Nchgw6h7kaNtuk9qe/rcP+nECgx7IQGchA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBA0pBwvl/Oh90UANVwu5wMTGlIIGlIIGlIIGlKOIbwdpntfCFDi2jATGlIIGlI+gubYgVndtsuEhpRPQTOlMZv7ZpnQkPIlaKY0ZrHUKhMaUhaDZkpjdGuNrk5oosaottrcPHIQNUbzqEnO0JDyMGimNEYR02LUhCZq9BbbYPSRg6jRS0p7SWdoosbeUptLflNI1NhLTmtFcZ5Oz68lfx9YUjI0iz62Y1qjttKmij+HJmrUUqOlqjFyBEGOmkOxyXQlbMRo8ere9LhA2FjS8pi62/mXuL3t9V6r6xs6ItfU84OC/xeXYCHuiqn6AAAAAElFTkSuQmCC">
+<link rel="apple-touch-icon" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFG0lEQVR4nO3dzXXTQBRA4XFOanAFYUExbCmFddaUwpZySAVuIizAIIQkS5r/uffb40jjd2dkEw6XUNn1+vJe+xpUz+32dqn584v/cAdeW0oHUeSHOfQ6o0QMWX+Ag68UcoaQ5YUdfOWQI4SkL+jgq4SUISR5IQdfNaQI4Sn2BRx+1ZJi9qICcPhVW+wMnjpCHHy16Mwj0eETwOFXq87M5qEAHH617uiM7g7A4VcvjszqrgAcfvVm78xGfw0q9exhAO7+6tWe2d0MwOFX7x7N8GoADr9GsTXLfgYQ2mIA7v4azdpMewII7b8A3P01qqXZ9gQQ2j8BuPtrdPMZ9wQQ2p8A3P1FMZ11TwChGYDQnkLw8Uc895n3BBCaAQjNAIR28flfZJ4AQjMAoRmA0AxAaAYgNAMQ2nPtC6D4/OnH4T/z7fuHDFeiKf8eIJMzA/+IQaRnAAnlGPo1xpCGASRQcvDnDCGOAUSoOfhzhnCOAZzQ0uDPGcIxBnBAy4M/Zwj7+PcAO/U0/CH0d721GMAOvQ5Tr9ddko9AG0YaIB+JlnkCrBhp+EMY735SMYAFow7LqPcVwwBmRh+S0e/vKAOYoAwH5T73MAChGcBvtF2Rdr9rDCBwh4F631P4AOhDQL9/fABiQwdA3/3uyOuADkDCBkDe9ZZQ1wMbgBQCNADqbvcIcV2QAUh3uACIu9wRtPXBBSBNGYDQUAHQjvezSOuECkCaMwChGYDQMAGQnmtToKwXJgBpiQEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAELDBOD/kXUMZb0wAUhLDEBoBiA0VACU59pYpHVCBSDNGYDQcAGQjvczaOuDC0CaQgZA2+X2Iq4LMgDpDhsAcbfbQl0PbABSCPAAqLveHHkd0AFI+ADIu18I3j8+gBC4Q0C97ykD+I02DLT7XWMAQjOACcquSLnPPQxgZvThGP3+jjKABaMOyaj3FcMAVow2LKPdTyqX6/XlvfZFtK7n/y/Lwd/WTQCvX+KH8PXr+WHoMYKY4a+93qV08QiU4s2IfZ3edtLaw5/ydXJq/gTIsYixO1PLp0FsqC2ud05NB5BzB0nxprQUQooTqvX1zqHZAEocn6nelJohpHo062m9U3qufQEjuA9hyRB6+0zSKnQALT3CHNXztbeki2+BpFwMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQGvqX4fyNyr9ePzJ/uc4TQGjNBpD7H0+0+I8zaqKud7MBhJBv0Vp9M2ojrnfTAYSQfvFafjNaQFvv5gMIId0itv5mtIK03s3+o3iphC5OACkXAxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxDa0+32dql9EVINt9vbxRNAaAYgNAMQ2lMIv56Fal+IVNJ95j0BhGYAQvsTgI9BopjOuieA0P4JwFNAo5vPuCeA0P4LwFNAo1qabU8AoS0G4Cmg0azNtCeA0FYD8BTQKLZmefMEMAL17tEMP3wEMgL1as/s+hlAaLsC8BRQb/bO7O4TwAjUiyOzeugRyAjUuqMzevgzgBGoVWdmM2qYr9eX95g/L6UQsylHfQvkaaDaYmcw+mtQI1AtKWYv6fD6SKQSUm66WXZvQ1AOOZ42sj6+GIJSyPmYXeT53RB0RonPl8U/wBqDtpT+UqX6NzgGwVb7W8Sf8oF/4wBxf/kAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFG0lEQVR4nO3dzXXTQBRA4XFOanAFYUExbCmFddaUwpZySAVuIizAIIQkS5r/uffb40jjd2dkEw6XUNn1+vJe+xpUz+32dqn584v/cAdeW0oHUeSHOfQ6o0QMWX+Ag68UcoaQ5YUdfOWQI4SkL+jgq4SUISR5IQdfNaQI4Sn2BRx+1ZJi9qICcPhVW+wMnjpCHHy16Mwj0eETwOFXq87M5qEAHH617uiM7g7A4VcvjszqrgAcfvVm78xGfw0q9exhAO7+6tWe2d0MwOFX7x7N8GoADr9GsTXLfgYQ2mIA7v4azdpMewII7b8A3P01qqXZ9gQQ2j8BuPtrdPMZ9wQQ2p8A3P1FMZ11TwChGYDQnkLw8Uc895n3BBCaAQjNAIR28flfZJ4AQjMAoRmA0AxAaAYgNAMQ2nPtC6D4/OnH4T/z7fuHDFeiKf8eIJMzA/+IQaRnAAnlGPo1xpCGASRQcvDnDCGOAUSoOfhzhnCOAZzQ0uDPGcIxBnBAy4M/Zwj7+PcAO/U0/CH0d721GMAOvQ5Tr9ddko9AG0YaIB+JlnkCrBhp+EMY735SMYAFow7LqPcVwwBmRh+S0e/vKAOYoAwH5T73MAChGcBvtF2Rdr9rDCBwh4F631P4AOhDQL9/fABiQwdA3/3uyOuADkDCBkDe9ZZQ1wMbgBQCNADqbvcIcV2QAUh3uACIu9wRtPXBBSBNGYDQUAHQjvezSOuECkCaMwChGYDQMAGQnmtToKwXJgBpiQEIzQCEZgBCMwChGYDQDEBoBiA0AxCaAQjNAIRmAELDBOD/kXUMZb0wAUhLDEBoBiA0VACU59pYpHVCBSDNGYDQcAGQjvczaOuDC0CaQgZA2+X2Iq4LMgDpDhsAcbfbQl0PbABSCPAAqLveHHkd0AFI+ADIu18I3j8+gBC4Q0C97ykD+I02DLT7XWMAQjOACcquSLnPPQxgZvThGP3+jjKABaMOyaj3FcMAVow2LKPdTyqX6/XlvfZFtK7n/y/Lwd/WTQCvX+KH8PXr+WHoMYKY4a+93qV08QiU4s2IfZ3edtLaw5/ydXJq/gTIsYixO1PLp0FsqC2ud05NB5BzB0nxprQUQooTqvX1zqHZAEocn6nelJohpHo062m9U3qufQEjuA9hyRB6+0zSKnQALT3CHNXztbeki2+BpFwMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQGvqX4fyNyr9ePzJ/uc4TQGjNBpD7H0+0+I8zaqKud7MBhJBv0Vp9M2ojrnfTAYSQfvFafjNaQFvv5gMIId0itv5mtIK03s3+o3iphC5OACkXAxCaAQjNAIRmAEIzAKEZgNAMQGgGIDQDEJoBCM0AhGYAQjMAoRmA0AxAaAYgNAMQmgEIzQCEZgBCMwChGYDQDEBoBiA0AxDa0+32dql9EVINt9vbxRNAaAYgNAMQ2lMIv56Fal+IVNJ95j0BhGYAQvsTgI9BopjOuieA0P4JwFNAo5vPuCeA0P4LwFNAo1qabU8AoS0G4Cmg0azNtCeA0FYD8BTQKLZmefMEMAL17tEMP3wEMgL1as/s+hlAaLsC8BRQb/bO7O4TwAjUiyOzeugRyAjUuqMzevgzgBGoVWdmM2qYr9eX95g/L6UQsylHfQvkaaDaYmcw+mtQI1AtKWYv6fD6SKQSUm66WXZvQ1AOOZ42sj6+GIJSyPmYXeT53RB0RonPl8U/wBqDtpT+UqX6NzgGwVb7W8Sf8oF/4wBxf/kAAAAASUVORK5CYII=">
+
+<!-- Inline Web App Manifest -->
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22PT+Tracker%22%2C%22short_name%22%3A%22PT+Tracker%22%2C%22description%22%3A%22Personal+training+session+tracker%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%2308080e%22%2C%22theme_color%22%3A%22%2308080e%22%2C%22orientation%22%3A%22portrait%22%7D">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* iOS safe area support */
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  /* Prevent iOS text size adjust */
+  html { -webkit-text-size-adjust: 100%; }
+  /* iOS tap highlight removal */
+  * { -webkit-tap-highlight-color: transparent; }
+  /* Smooth scrolling on iOS */
+  .body { -webkit-overflow-scrolling: touch; }
+  /* Install banner */
+  .install-banner {
+    display: none;
+    position: fixed;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: 16px; right: 16px;
+    background: #1a1a2e;
+    border: 1px solid rgba(108,99,255,0.5);
+    border-radius: 14px;
+    padding: 14px 16px;
+    z-index: 200;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    animation: slideUp .3s ease;
+  }
+  .install-banner.show { display: flex; align-items: center; gap: 12px; }
+  .install-banner-text { flex: 1; font-size: 13px; line-height: 1.5; }
+  .install-banner-text strong { color: #eeeef8; display: block; margin-bottom: 2px; }
+  .install-banner-text span { color: #7878a0; font-size: 12px; }
+  .install-banner-close { background: none; border: none; color: #7878a0; font-size: 18px; cursor: pointer; padding: 4px; }
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #08080e;
+    --surface: #10101c;
+    --card: #161624;
+    --border: #252538;
+    --accent: #6c63ff;
+    --accent-glow: rgba(108,99,255,0.15);
+    --accent-dim: #3d3799;
+    --green: #2ee89a;
+    --green-dim: rgba(46,232,154,0.12);
+    --red: #ff6b6b;
+    --red-dim: rgba(255,107,107,0.12);
+    --yellow: #ffd166;
+    --yellow-dim: rgba(255,209,102,0.12);
+    --text: #eeeef8;
+    --muted: #7878a0;
+    --faint: #1e1e32;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: linear-gradient(135deg, var(--surface) 0%, #12122a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 22px 20px 18px;
+  }
+
+  .header-top { display: flex; align-items: center; justify-content: space-between; }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 8px var(--accent); }
+    50% { box-shadow: 0 0 18px var(--accent), 0 0 30px var(--accent-glow); }
+  }
+
+  .buy-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .buy-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(108,99,255,0.4); }
+
+  /* ── Stats ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; line-height: 1; }
+  .stat-label { font-size: 10px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  .progress-wrap { margin-top: 14px; }
+  .progress-info { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+  .progress-bar { background: var(--faint); border-radius: 8px; height: 6px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-dim), var(--accent)); border-radius: 8px; transition: width .5s ease; }
+
+  .alert-banner {
+    margin-top: 12px;
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .alert-low { background: rgba(255,209,102,0.1); border: 1px solid rgba(255,209,102,0.3); color: var(--yellow); }
+  .alert-empty { background: rgba(255,107,107,0.1); border: 1px solid rgba(255,107,107,0.3); color: var(--red); }
+
+  /* ── Tabs ── */
+  .tabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    gap: 4px;
+  }
+
+  .tab {
+    padding: 13px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: var(--muted);
+    transition: all .2s;
+  }
+
+  .tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+  /* ── Body ── */
+  .body { padding: 18px 16px; max-width: 560px; margin: 0 auto; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .section-title { font-size: 14px; font-weight: 700; }
+  .section-muted { font-size: 13px; font-weight: 700; color: var(--muted); margin: 20px 0 10px; }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .empty-state {
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    padding: 30px 20px;
+  }
+
+  /* ── Session Items ── */
+  .session-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    transition: border-color .15s;
+  }
+
+  .session-item:hover { border-color: rgba(108,99,255,0.4); }
+
+  .session-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .session-info { flex: 1; }
+  .session-date { font-weight: 700; font-size: 14px; }
+  .session-time { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .session-moved { font-size: 10px; color: var(--accent); margin-left: 6px; }
+
+  .pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .pill-scheduled { background: rgba(255,209,102,0.15); color: var(--yellow); border: 1px solid rgba(255,209,102,0.25); }
+  .pill-completed { background: rgba(46,232,154,0.12); color: var(--green); border: 1px solid rgba(46,232,154,0.25); }
+  .pill-skipped { background: rgba(255,107,107,0.12); color: var(--red); border: 1px solid rgba(255,107,107,0.25); }
+
+  .chevron { color: var(--muted); font-size: 12px; transition: transform .2s; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .session-actions {
+    display: none;
+    gap: 7px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .session-actions.open { display: flex; }
+
+  /* ── Buttons ── */
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 7px 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-green { background: rgba(46,232,154,0.15); color: var(--green); border: 1px solid rgba(46,232,154,0.3); }
+  .btn-yellow { background: rgba(255,209,102,0.15); color: var(--yellow); border: 1px solid rgba(255,209,102,0.3); }
+  .btn-ghost { background: var(--faint); color: var(--text); }
+  .btn-red { background: rgba(255,107,107,0.12); color: var(--red); border: 1px solid rgba(255,107,107,0.3); }
+  .btn-accent-ghost { background: var(--accent-glow); color: var(--accent); border: 1px solid rgba(108,99,255,0.3); }
+
+  /* ── Form ── */
+  label { font-size: 12px; color: var(--muted); margin-bottom: 5px; display: block; }
+
+  input[type="date"], input[type="time"], input[type="text"] {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 9px 13px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    width: 100%;
+    transition: border-color .15s;
+    -webkit-appearance: none;
+    color-scheme: dark;
+  }
+
+  input:focus { border-color: var(--accent); }
+
+  .form-group { margin-bottom: 14px; }
+
+  .day-picker { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+
+  .day-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--faint);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+
+  .day-btn.selected {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(108,99,255,0.3);
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    animation: slideUp .2s ease;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(16px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 6px; }
+  .modal-sub { font-size: 12px; color: var(--muted); margin-bottom: 18px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    top: 16px; right: 16px;
+    z-index: 999;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    transform: translateY(-4px);
+    opacity: 0;
+    transition: all .3s;
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast-ok { background: var(--card); border: 1px solid rgba(46,232,154,0.5); color: var(--green); }
+  .toast-err { background: var(--card); border: 1px solid rgba(255,107,107,0.5); color: var(--red); }
+
+  /* ── Add session inline ── */
+  .add-session-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 14px;
+    margin-bottom: 14px;
+    display: none;
+  }
+
+  .add-session-form.open { display: block; }
+  .add-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-end; margin-top: 10px; }
+  .add-row input { flex: 1; min-width: 120px; }
+
+  /* ── Package items ── */
+  .pkg-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    margin-bottom: 8px;
+  }
+
+  .pkg-num { font-family: 'Syne', sans-serif; font-size: 24px; font-weight: 800; color: var(--accent); }
+
+  /* ── Info box ── */
+  .info-box {
+    border: 1px dashed var(--border);
+    border-radius: 11px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .schedule-active {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: var(--accent-glow);
+    border: 1px solid rgba(108,99,255,0.3);
+    border-radius: 9px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  @media (max-width: 400px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-num { font-size: 22px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- iOS Install Hint Banner -->
+<div class="install-banner" id="installBanner">
+  <div style="font-size:28px">📲</div>
+  <div class="install-banner-text">
+    <strong>Install PT Tracker</strong>
+    <span>Tap <b>Share</b> → <b>Add to Home Screen</b> to install</span>
+  </div>
+  <button class="install-banner-close" onclick="dismissInstall()">✕</button>
+</div>
+
+
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Move Modal -->
+<div class="modal-overlay" id="moveModal">
+  <div class="modal">
+    <div class="modal-title">Reschedule Session</div>
+    <div class="modal-sub" id="moveModalSub">Originally: —</div>
+    <div class="form-group">
+      <label>New Date</label>
+      <input type="date" id="moveDate">
+    </div>
+    <div class="form-group">
+      <label>New Time (optional)</label>
+      <input type="time" id="moveTime">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeMoveModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmMove()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Buy Modal -->
+<div class="modal-overlay" id="buyModal">
+  <div class="modal" style="text-align:center">
+    <div style="font-size:42px; margin-bottom:10px">💪</div>
+    <div class="modal-title">Buy 9-Session Package</div>
+    <div class="modal-sub">Add 9 new training sessions to your balance.</div>
+    <div class="modal-actions" style="justify-content:center">
+      <button class="btn btn-ghost" onclick="closeBuyModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmBuy()">Add 9 Sessions</button>
+    </div>
+  </div>
+</div>
+
+<!-- Batch Calendar Modal -->
+<div class="modal-overlay" id="batchCalModal">
+  <div class="modal">
+    <div class="modal-title">📆 Add All to Calendar</div>
+    <div class="modal-sub" id="batchCalSub">Loading sessions…</div>
+
+    <div id="batchCalOptions">
+      <div style="display:flex;flex-direction:column;gap:9px;">
+        <button class="btn btn-primary" style="width:100%;padding:11px;font-size:13px" onclick="batchGoogleCalendar()">
+          Open in Google Calendar (one by one)
+        </button>
+        <button class="btn btn-accent-ghost" style="width:100%;padding:11px;font-size:13px" onclick="downloadICS()">
+          ⬇ Download .ics file (import to any calendar)
+        </button>
+      </div>
+      <div style="margin-top:14px;padding:12px;background:var(--surface);border-radius:9px;font-size:11px;color:var(--muted);line-height:1.7">
+        <strong style="color:var(--text)">Tip:</strong> The .ics file is the easiest way to add all sessions at once. Open it after downloading — your calendar app will import everything automatically.
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeBatchCalModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-top">
+    <div class="logo"><span class="logo-dot"></span> PT Tracker</div>
+    <button class="buy-btn" onclick="openBuyModal()">+ Buy Pack</button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num" id="statPurchased" style="color:var(--accent)">0</div>
+      <div class="stat-label">Purchased</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statCompleted" style="color:var(--green)">0</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statScheduled" style="color:var(--yellow)">0</div>
+      <div class="stat-label">Scheduled</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num" id="statRemaining">0</div>
+      <div class="stat-label">Remaining</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-info">
+      <span id="progressLabel">0% of sessions used</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <div id="alertBanner" style="display:none"></div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tab active" onclick="switchTab('sessions', this)">Sessions</button>
+  <button class="tab" onclick="switchTab('schedule', this)">Schedule</button>
+  <button class="tab" onclick="switchTab('packages', this)">Packages</button>
+</div>
+
+<!-- Body -->
+<div class="body">
+
+  <!-- Sessions Tab -->
+  <div class="tab-panel active" id="tab-sessions">
+    <div class="section-header">
+      <span class="section-title">Upcoming</span>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end">
+        <button class="btn btn-accent-ghost" onclick="openBatchCalModal()">📆 Add All to Cal</button>
+        <button class="btn btn-ghost" id="toggleAddBtn" onclick="toggleAddForm()">+ Add Session</button>
+      </div>
+    </div>
+
+    <div class="add-session-form" id="addSessionForm">
+      <div style="font-size:12px; font-weight:700; color:var(--muted); margin-bottom:10px">NEW SESSION</div>
+      <div class="add-row">
+        <div style="flex:1; min-width:140px">
+          <label>Date</label>
+          <input type="date" id="addDate">
+        </div>
+        <div style="flex:1; min-width:110px">
+          <label>Time</label>
+          <input type="time" id="addTime" value="07:00">
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; margin-top:10px; justify-content:flex-end">
+        <button class="btn btn-ghost" onclick="toggleAddForm()">Cancel</button>
+        <button class="btn btn-primary" onclick="addManualSession()">Add</button>
+      </div>
+    </div>
+
+    <div id="upcomingList"></div>
+    <div id="historySection" style="display:none">
+      <div class="section-muted">History</div>
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <!-- Schedule Tab -->
+  <div class="tab-panel" id="tab-schedule">
+    <div class="card">
+      <div class="card-title">Recurring Schedule</div>
+
+      <label>Training Days</label>
+      <div class="day-picker" id="dayPicker">
+        <button class="day-btn" data-day="SUN" onclick="toggleDay(this)">Su</button>
+        <button class="day-btn" data-day="MON" onclick="toggleDay(this)">Mo</button>
+        <button class="day-btn" data-day="TUE" onclick="toggleDay(this)">Tu</button>
+        <button class="day-btn" data-day="WED" onclick="toggleDay(this)">We</button>
+        <button class="day-btn" data-day="THU" onclick="toggleDay(this)">Th</button>
+        <button class="day-btn" data-day="FRI" onclick="toggleDay(this)">Fr</button>
+        <button class="day-btn" data-day="SAT" onclick="toggleDay(this)">Sa</button>
+      </div>
+
+      <div class="form-group">
+        <label>Session Time</label>
+        <input type="time" id="schedTime" value="07:00">
+      </div>
+
+      <div class="form-group">
+        <label>Starting From</label>
+        <input type="date" id="schedStart">
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; padding:11px; font-size:14px" onclick="applySchedule()">
+        Apply Schedule
+      </button>
+
+      <div id="scheduleActive" style="display:none" class="schedule-active"></div>
+    </div>
+
+    <div class="card" style="background:transparent; border:1px dashed var(--border)">
+      <p style="font-size:12px; color:var(--muted); line-height:1.7">
+        <strong style="color:var(--text)">How it works</strong><br>
+        Pick your training days, time, and start date. Applying generates sessions for your remaining balance. You can then mark each as done, skip, or reschedule from the Sessions tab.
+      </p>
+    </div>
+  </div>
+
+  <!-- Packages Tab -->
+  <div class="tab-panel" id="tab-packages">
+    <div class="section-header">
+      <span class="section-title">My Packages</span>
+      <button class="btn btn-primary" onclick="openBuyModal()">+ New Package</button>
+    </div>
+
+    <div id="packagesList"></div>
+
+    <div class="info-box" id="packagesTotal"></div>
+  </div>
+
+</div>
+
+
+<script>
+
+// ── Storage ─────────────────────────────────────────────────────────────────
+const STORE_KEY = 'pt-tracker-v1';
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    return raw ? JSON.parse(raw) : defaultState();
+  } catch { return defaultState(); }
+}
+
+function save() {
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+}
+
+function defaultState() {
+  return {
+    totalPurchased: 0,
+    packages: [],
+    sessions: [],
+    schedule: null,
+  };
+}
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+let state = load();
+
+const uid = () => Math.random().toString(36).slice(2, 9);
+
+function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+function fmtDate(d) {
+  if (!d) return '';
+  const dt = new Date(d + 'T12:00:00');
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+const DAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+function nextOccurrences(days, startDate, count) {
+  const idxs = days.map(d => DAYS.indexOf(d));
+  const results = [];
+  const cur = new Date(startDate + 'T12:00:00');
+  let i = 0;
+  while (results.length < count && i < 400) {
+    if (idxs.includes(cur.getDay())) results.push(cur.toISOString().slice(0, 10));
+    cur.setDate(cur.getDate() + 1);
+    i++;
+  }
+  return results;
+}
+
+// ── Derived ──────────────────────────────────────────────────────────────────
+function getStats() {
+  const completed = state.sessions.filter(s => s.status === 'completed').length;
+  const skipped   = state.sessions.filter(s => s.status === 'skipped').length;
+  const scheduled = state.sessions.filter(s => s.status === 'scheduled').length;
+  const remaining = state.totalPurchased - completed - skipped;
+  const pct = state.totalPurchased > 0 ? Math.round((completed / state.totalPurchased) * 100) : 0;
+  return { completed, skipped, scheduled, remaining, pct };
+}
+
+// ── Render ───────────────────────────────────────────────────────────────────
+function render() {
+  const { completed, skipped, scheduled, remaining, pct } = getStats();
+
+  document.getElementById('statPurchased').textContent = state.totalPurchased;
+  document.getElementById('statCompleted').textContent = completed;
+  document.getElementById('statScheduled').textContent = scheduled;
+  document.getElementById('statRemaining').textContent = remaining;
+  document.getElementById('statRemaining').style.color = remaining <= 3 ? 'var(--red)' : 'var(--text)';
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = pct + '% of sessions used';
+
+  const banner = document.getElementById('alertBanner');
+  if (remaining <= 0 && state.totalPurchased > 0) {
+    banner.style.display = '';
+    banner.className = 'alert-banner alert-empty';
+    banner.textContent = '🚫 No sessions remaining — buy a new package!';
+  } else if (remaining <= 3 && remaining > 0) {
+    banner.style.display = '';
+    banner.className = 'alert-banner alert-low';
+    banner.textContent = `⚠️ Only ${remaining} session${remaining !== 1 ? 's' : ''} left — consider buying a new package!`;
+  } else {
+    banner.style.display = 'none';
+  }
+
+  renderSessions();
+  renderPackages();
+  renderScheduleStatus();
+}
+
+function renderSessions() {
+  const today = todayStr();
+  const sorted = [...state.sessions].sort((a, b) => a.date.localeCompare(b.date));
+  const upcoming = sorted.filter(s => s.status === 'scheduled' && s.date >= today);
+  const history  = sorted.filter(s => s.status !== 'scheduled' || s.date < today);
+
+  const upEl = document.getElementById('upcomingList');
+  upEl.innerHTML = upcoming.length === 0
+    ? '<div class="empty-state">No upcoming sessions.<br>Apply a schedule or add one manually.</div>'
+    : upcoming.map(s => sessionHTML(s)).join('');
+
+  const histSec = document.getElementById('historySection');
+  if (history.length > 0) {
+    histSec.style.display = '';
+    document.getElementById('historyList').innerHTML = history.map(s => sessionHTML(s)).join('');
+  } else {
+    histSec.style.display = 'none';
+  }
+}
+
+function sessionHTML(sess) {
+  const pillClass = { scheduled: 'pill-scheduled', completed: 'pill-completed', skipped: 'pill-skipped' }[sess.status];
+  const pillLabel = sess.status;
+
+  const actions = buildActions(sess);
+
+  return `
+    <div class="session-item" id="sess-${sess.id}">
+      <div class="session-main" onclick="toggleSession('${sess.id}')">
+        <div class="session-info">
+          <div class="session-date">${fmtDate(sess.date)}${sess.movedFrom ? '<span class="session-moved">moved</span>' : ''}</div>
+          ${sess.time ? `<div class="session-time">${sess.time}</div>` : ''}
+        </div>
+        <span class="pill ${pillClass}">${pillLabel}</span>
+        <span class="chevron" id="chev-${sess.id}">▼</span>
+      </div>
+      <div class="session-actions" id="actions-${sess.id}">
+        ${actions}
+      </div>
+    </div>`;
+}
+
+function buildActions(sess) {
+  let html = '';
+  if (sess.status !== 'completed') {
+    html += `<button class="btn btn-green" onclick="markSession('${sess.id}','completed')">✓ Done</button>`;
+  }
+  if (sess.status === 'scheduled') {
+    html += `<button class="btn btn-yellow" onclick="markSession('${sess.id}','skipped')">Skip</button>`;
+    html += `<button class="btn btn-ghost" onclick="openMoveModal('${sess.id}')">📅 Move</button>`;
+    if (sess.status !== 'completed') {
+      html += `<button class="btn btn-accent-ghost" onclick="addToCalendar('${sess.id}')">📆 Add to Cal</button>`;
+    }
+  }
+  if (sess.status !== 'scheduled') {
+    html += `<button class="btn btn-ghost" onclick="markSession('${sess.id}','scheduled')">Undo</button>`;
+  }
+  html += `<button class="btn btn-red" onclick="deleteSession('${sess.id}')">Delete</button>`;
+  return html;
+}
+
+function renderPackages() {
+  const list = document.getElementById('packagesList');
+  const { completed, skipped, remaining } = getStats();
+
+  if (state.packages.length === 0) {
+    list.innerHTML = '<div class="empty-state">No packages yet.<br>Buy your first 9-session pack!</div>';
+  } else {
+    list.innerHTML = [...state.packages].reverse().map((pkg, i) => `
+      <div class="pkg-item">
+        <div>
+          <div style="font-weight:700">Package #${state.packages.length - i}</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:3px">Purchased ${fmtDate(pkg.date)}</div>
+        </div>
+        <div class="pkg-num">${pkg.count}</div>
+      </div>`).join('');
+  }
+
+  document.getElementById('packagesTotal').innerHTML =
+    `<strong style="color:var(--text)">${state.totalPurchased} sessions</strong> across ${state.packages.length} package${state.packages.length !== 1 ? 's' : ''}<br>
+     <span>${completed} completed · ${skipped} skipped · ${remaining} remaining</span>`;
+}
+
+function renderScheduleStatus() {
+  const el = document.getElementById('scheduleActive');
+  if (state.schedule) {
+    el.style.display = '';
+    el.textContent = `✓ Active: ${state.schedule.days.join(', ')} at ${state.schedule.time}`;
+
+    // Restore day buttons
+    document.querySelectorAll('.day-btn').forEach(btn => {
+      btn.classList.toggle('selected', state.schedule.days.includes(btn.dataset.day));
+    });
+    document.getElementById('schedTime').value = state.schedule.time;
+  } else {
+    el.style.display = 'none';
+  }
+}
+
+// ── Actions ──────────────────────────────────────────────────────────────────
+function markSession(id, status) {
+  state.sessions = state.sessions.map(s => s.id === id ? { ...s, status } : s);
+  save(); render();
+}
+
+function deleteSession(id) {
+  state.sessions = state.sessions.filter(s => s.id !== id);
+  save(); render();
+}
+
+function addManualSession() {
+  const date = document.getElementById('addDate').value;
+  const time = document.getElementById('addTime').value;
+  if (!date) return showToast('Please pick a date', 'err');
+  state.sessions.push({ id: uid(), date, time, status: 'scheduled' });
+  save(); render();
+  document.getElementById('addDate').value = '';
+  document.getElementById('addSessionForm').classList.remove('open');
+  showToast('Session added ✓');
+}
+
+function applySchedule() {
+  const days = [...document.querySelectorAll('.day-btn.selected')].map(b => b.dataset.day);
+  const time = document.getElementById('schedTime').value;
+  const start = document.getElementById('schedStart').value;
+
+  if (!days.length) return showToast('Pick at least one day', 'err');
+  if (!start) return showToast('Pick a start date', 'err');
+
+  const { remaining } = getStats();
+  const count = Math.max(remaining, 9);
+  const dates = nextOccurrences(days, start, count);
+
+  const newSessions = dates.map(date => ({ id: uid(), date, time, status: 'scheduled' }));
+
+  state.sessions = [...state.sessions.filter(s => s.status !== 'scheduled'), ...newSessions];
+  state.schedule = { days, time, start };
+
+  save(); render();
+  showToast(`${newSessions.length} sessions scheduled 🗓`);
+}
+
+function confirmBuy() {
+  state.packages.push({ id: uid(), date: todayStr(), count: 9 });
+  state.totalPurchased += 9;
+  save(); render();
+  closeBuyModal();
+  showToast('9 sessions added! 💪');
+}
+
+// ── Calendar ─────────────────────────────────────────────────────────────────
+function addToCalendar(id) {
+  const sess = state.sessions.find(s => s.id === id);
+  if (!sess) return;
+
+  const time = sess.time || '07:00';
+  const [h, m] = time.split(':').map(Number);
+  const endH = String(h + 1).padStart(2, '0');
+  const endTime = `${endH}:${String(m).padStart(2, '0')}`;
+
+  const start = `${sess.date}T${time}:00`;
+  const end   = `${sess.date}T${endTime}:00`;
+
+  // Try Google Calendar deep link
+  const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE`
+    + `&text=Personal+Training`
+    + `&dates=${start.replace(/[-:]/g,'').replace('T','T')}/${end.replace(/[-:]/g,'').replace('T','T')}`
+    + `&details=Personal+training+session`;
+
+  window.open(gcal, '_blank');
+  showToast('Opened in Google Calendar ✓');
+}
+
+// ── Move Modal ───────────────────────────────────────────────────────────────
+let movingId = null;
+
+function openMoveModal(id) {
+  const sess = state.sessions.find(s => s.id === id);
+  movingId = id;
+  document.getElementById('moveModalSub').textContent = `Originally: ${fmtDate(sess.date)}`;
+  document.getElementById('moveDate').value = sess.date;
+  document.getElementById('moveTime').value = sess.time || '';
+  document.getElementById('moveModal').classList.add('open');
+}
+
+function closeMoveModal() {
+  document.getElementById('moveModal').classList.remove('open');
+  movingId = null;
+}
+
+function confirmMove() {
+  const newDate = document.getElementById('moveDate').value;
+  const newTime = document.getElementById('moveTime').value;
+  if (!newDate) return showToast('Pick a date', 'err');
+
+  state.sessions = state.sessions.map(s => {
+    if (s.id !== movingId) return s;
+    return { ...s, date: newDate, time: newTime || s.time, movedFrom: s.movedFrom || s.date, status: 'scheduled' };
+  });
+
+  save(); render();
+  closeMoveModal();
+  showToast('Session rescheduled ✓');
+}
+
+// ── Buy Modal ────────────────────────────────────────────────────────────────
+function openBuyModal()  { document.getElementById('buyModal').classList.add('open'); }
+function closeBuyModal() { document.getElementById('buyModal').classList.remove('open'); }
+
+// ── Session expand ───────────────────────────────────────────────────────────
+function toggleSession(id) {
+  const actions = document.getElementById('actions-' + id);
+  const chev    = document.getElementById('chev-' + id);
+  actions.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+// ── Add form toggle ──────────────────────────────────────────────────────────
+function toggleAddForm() {
+  document.getElementById('addSessionForm').classList.toggle('open');
+  if (!document.getElementById('addDate').value) {
+    document.getElementById('addDate').value = todayStr();
+  }
+}
+
+// ── Day picker ───────────────────────────────────────────────────────────────
+function toggleDay(btn) { btn.classList.toggle('selected'); }
+
+// ── Tab switching ────────────────────────────────────────────────────────────
+function switchTab(name, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+// ── Toast ────────────────────────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type = 'ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = `toast toast-${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ── Batch Calendar ────────────────────────────────────────────────────────────
+function getUpcomingSessions() {
+  const today = todayStr();
+  return [...state.sessions]
+    .filter(s => s.status === 'scheduled' && s.date >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+function openBatchCalModal() {
+  const sessions = getUpcomingSessions();
+  const sub = document.getElementById('batchCalSub');
+  if (sessions.length === 0) {
+    sub.textContent = 'No upcoming scheduled sessions found.';
+    document.getElementById('batchCalOptions').style.display = 'none';
+  } else {
+    sub.textContent = `${sessions.length} upcoming session${sessions.length !== 1 ? 's' : ''} will be added.`;
+    document.getElementById('batchCalOptions').style.display = '';
+  }
+  document.getElementById('batchCalModal').classList.add('open');
+}
+
+function closeBatchCalModal() {
+  document.getElementById('batchCalModal').classList.remove('open');
+}
+
+function gcalDateStr(date, time) {
+  // Format: 20250310T070000
+  const t = (time || '07:00').replace(':', '') + '00';
+  return date.replace(/-/g, '') + 'T' + t;
+}
+
+function batchGoogleCalendar() {
+  const sessions = getUpcomingSessions();
+  if (!sessions.length) return;
+
+  let i = 0;
+  function openNext() {
+    if (i >= sessions.length) {
+      showToast(`Opened ${sessions.length} Google Calendar tabs ✓`);
+      closeBatchCalModal();
+      return;
+    }
+    const sess = sessions[i++];
+    const time = sess.time || '07:00';
+    const [h, m] = time.split(':').map(Number);
+    const endH = String(h + 1).padStart(2, '0');
+    const endTime = endH + ':' + String(m).padStart(2, '0');
+
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+      + '&text=Personal+Training'
+      + `&dates=${gcalDateStr(sess.date, time)}/${gcalDateStr(sess.date, endTime)}`
+      + '&details=Personal+training+session';
+
+    window.open(url, '_blank');
+    // Small delay to avoid popup blocker triggering on rapid opens
+    setTimeout(openNext, 600);
+  }
+  openNext();
+}
+
+function downloadICS() {
+  const sessions = getUpcomingSessions();
+  if (!sessions.length) return showToast('No upcoming sessions', 'err');
+
+  const pad = n => String(n).padStart(2, '0');
+
+  function icsDate(dateStr, timeStr) {
+    const [y, mo, d] = dateStr.split('-');
+    const [h, mi] = (timeStr || '07:00').split(':');
+    return `${y}${mo}${d}T${h}${mi}00`;
+  }
+
+  function icsDateEnd(dateStr, timeStr) {
+    const [h, mi] = (timeStr || '07:00').split(':').map(Number);
+    const endH = pad(h + 1);
+    return icsDate(dateStr, `${endH}:${pad(mi)}`);
+  }
+
+  const uid_base = Date.now();
+
+  const events = sessions.map((sess, i) => [
+    'BEGIN:VEVENT',
+    `UID:pt-tracker-${uid_base}-${i}@local`,
+    `DTSTAMP:${icsDate(todayStr(), '00:00')}`,
+    `DTSTART:${icsDate(sess.date, sess.time)}`,
+    `DTEND:${icsDateEnd(sess.date, sess.time)}`,
+    'SUMMARY:Personal Training',
+    'DESCRIPTION:Personal training session',
+    'END:VEVENT',
+  ].join('\r\n')).join('\r\n');
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//PT Tracker//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:PUBLISH',
+    events,
+    'END:VCALENDAR',
+  ].join('\r\n');
+
+  const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'personal-training-sessions.ics';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+
+  showToast(`Downloaded ${sessions.length} sessions as .ics ✓`);
+  closeBatchCalModal();
+}
+
+// ── Close modals on overlay click ────────────────────────────────────────────
+document.getElementById('batchCalModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeBatchCalModal();
+});
+document.getElementById('moveModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeMoveModal();
+});
+document.getElementById('buyModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeBuyModal();
+});
+
+// ── Init ─────────────────────────────────────────────────────────────────────
+document.getElementById('schedStart').value = todayStr();
+document.getElementById('addDate').value = todayStr();
+render();
+
+
+// ── PWA / iOS Install Prompt ─────────────────────────────────────────────────
+(function() {
+  // Show install hint if running in Safari (not already installed as PWA)
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isInStandaloneMode = window.navigator.standalone === true;
+  const dismissed = localStorage.getItem('pwa-install-dismissed');
+
+  if (isIOS && !isInStandaloneMode && !dismissed) {
+    setTimeout(() => {
+      document.getElementById('installBanner').classList.add('show');
+    }, 2000);
+  }
+})();
+
+function dismissInstall() {
+  document.getElementById('installBanner').classList.remove('show');
+  localStorage.setItem('pwa-install-dismissed', '1');
+}
+
+// ── Service Worker (inline via blob) ────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'pt-tracker-v1';
+    const FONTS = [
+      'https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap'
+    ];
+    self.addEventListener('install', e => {
+      e.waitUntil(
+        caches.open(CACHE).then(c => c.addAll(FONTS).catch(() => {}))
+      );
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', e => {
+      e.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      ));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', e => {
+      if (e.request.url.includes('fonts.g')) {
+        e.respondWith(
+          caches.match(e.request).then(r => r || fetch(e.request).then(res => {
+            const clone = res.clone();
+            caches.open(CACHE).then(c => c.put(e.request, clone));
+            return res;
+          }))
+        );
+      }
+    });
+  `;
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+</body>
+</html>
